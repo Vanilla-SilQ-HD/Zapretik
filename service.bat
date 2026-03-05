@@ -77,7 +77,7 @@ echo      4. Game Filter         [!GameFilterStatus!]
 echo      5. IPSet Filter        [!IPsetStatus!]
 echo      6. Auto-Update Check   [!CheckUpdatesStatus!]
 echo.
-echo   :: LIST & BIN UPDATES
+echo   :: LIST / BIN UPDATES
 echo      7. Update list-general
 echo      8. Update ipset-all
 echo      9. Update bin files
