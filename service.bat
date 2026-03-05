@@ -78,13 +78,13 @@ echo      5. IPSet Filter        [!IPsetStatus!]
 echo      6. Auto-Update Check   [!CheckUpdatesStatus!]
 echo.
 echo   :: UPDATES (Flowseal)
-echo      7. Update IPSet List      (from project .service/ipset-service.txt)
-echo      8. Update Hosts File      (for Telegram Web / Discord voice)
-echo      9. Check for Updates      (new zapret version on GitHub)
+echo      7. Update IPSet List
+echo      8. Update Hosts File
+echo      9. Check for Updates
 echo.
 echo   :: ADVANCED LIST UPDATES (bol-van/rulist)
-echo      12. Update list-general   (download hosts from rulist)
-echo      13. Update ipset-all      (download IP ranges from rulist)
+echo      12. Update list-general
+echo      13. Update ipset-all
 echo.
 echo   :: TOOLS
 echo      10. Run Diagnostics
