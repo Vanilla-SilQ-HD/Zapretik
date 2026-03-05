@@ -1,5 +1,5 @@
 @echo off
-set "LOCAL_VERSION=1.9.8"
+set "LOCAL_VERSION=1.9.9"
 set "RULIST_HOSTS_URL=https://raw.githubusercontent.com/bol-van/rulist/refs/heads/main/reestr_hostname.txt"
 set "RULIST_IPSET_URL=https://raw.githubusercontent.com/bol-van/rulist/refs/heads/main/reestr_smart4.txt"
 
@@ -77,19 +77,20 @@ echo      4. Game Filter         [!GameFilterStatus!]
 echo      5. IPSet Filter        [!IPsetStatus!]
 echo      6. Auto-Update Check   [!CheckUpdatesStatus!]
 echo.
-echo   :: LIST UPDATES (bol-van/rulist)
+echo   :: LIST & BIN UPDATES
 echo      7. Update list-general
 echo      8. Update ipset-all
+echo      9. Update bin files
 echo.
 echo   :: TOOLS
-echo      9. Run Diagnostics
-echo      10. Run Tests
+echo      10. Run Diagnostics
+echo      11. Run Tests
 echo.
 echo   ----------------------------------------
 echo      0. Exit
 echo.
 
-set /p menu_choice=   Select option (0-10): 
+set /p menu_choice=   Select option (0-11): 
 
 if "%menu_choice%"=="1" goto service_install
 if "%menu_choice%"=="2" goto service_remove
@@ -99,8 +100,9 @@ if "%menu_choice%"=="5" goto ipset_switch
 if "%menu_choice%"=="6" goto check_updates_switch
 if "%menu_choice%"=="7" call "%~dp0utils\\update-rulist-lists.bat" hosts
 if "%menu_choice%"=="8" call "%~dp0utils\\update-rulist-lists.bat" ipset
-if "%menu_choice%"=="9" goto service_diagnostics
-if "%menu_choice%"=="10" goto run_tests
+if "%menu_choice%"=="9" call "%~dp0utils\\update-bin.bat"
+if "%menu_choice%"=="10" goto service_diagnostics
+if "%menu_choice%"=="11" goto run_tests
 if "%menu_choice%"=="0" exit /b
 goto menu
 
@@ -145,6 +147,10 @@ set "BIN_PATH=%~dp0bin\"
 if not exist "%BIN_PATH%\*.sys" (
     call :PrintRed "WinDivert64.sys file NOT found."
 )
+if not exist "%BIN_PATH%winws.exe" call :PrintRed "winws.exe not found in bin folder."
+if not exist "%BIN_PATH%WinDivert.dll" call :PrintRed "WinDivert.dll not found in bin folder."
+if not exist "%BIN_PATH%WinDivert64.sys" call :PrintRed "WinDivert64.sys not found in bin folder."
+if not exist "%BIN_PATH%cygwin1.dll" call :PrintRed "cygwin1.dll not found in bin folder."
 echo:
 
 tasklist /FI "IMAGENAME eq winws.exe" | find /I "winws.exe" > nul
@@ -362,10 +368,10 @@ goto menu
 chcp 437 > nul
 cls
 
-:: Set current version and URLs
-set "GITHUB_VERSION_URL=https://raw.githubusercontent.com/Flowseal/zapret-discord-youtube/main/.service/version.txt"
-set "GITHUB_RELEASE_URL=https://github.com/Flowseal/zapret-discord-youtube/releases/tag/"
-set "GITHUB_DOWNLOAD_URL=https://github.com/Flowseal/zapret-discord-youtube/releases/latest"
+:: Set current version and URLs (Zapretik fork)
+set "GITHUB_VERSION_URL=https://raw.githubusercontent.com/Vanilla-SilQ-HD/Zapretik/main/service/version.txt"
+set "GITHUB_RELEASE_URL=https://github.com/Vanilla-SilQ-HD/Zapretik/releases/tag/"
+set "GITHUB_DOWNLOAD_URL=https://github.com/Vanilla-SilQ-HD/Zapretik/releases/latest"
 
 :: Get the latest version from GitHub
 for /f "delims=" %%A in ('powershell -NoProfile -Command "(Invoke-WebRequest -Uri \"%GITHUB_VERSION_URL%\" -Headers @{\"Cache-Control\"=\"no-cache\"} -UseBasicParsing -TimeoutSec 5).Content.Trim()" 2^>nul') do set "GITHUB_VERSION=%%A"
