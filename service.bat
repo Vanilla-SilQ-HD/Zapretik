@@ -1,5 +1,7 @@
 @echo off
-set "LOCAL_VERSION=1.9.7b"
+set "LOCAL_VERSION=1.9.8"
+set "RULIST_HOSTS_URL=https://raw.githubusercontent.com/bol-van/rulist/refs/heads/main/reestr_hostname.txt"
+set "RULIST_IPSET_URL=https://raw.githubusercontent.com/bol-van/rulist/refs/heads/main/reestr_smart4.txt"
 
 :: External commands
 if "%~1"=="status_zapret" (
@@ -75,10 +77,14 @@ echo      4. Game Filter         [!GameFilterStatus!]
 echo      5. IPSet Filter        [!IPsetStatus!]
 echo      6. Auto-Update Check   [!CheckUpdatesStatus!]
 echo.
-echo   :: UPDATES
-echo      7. Update IPSet List
-echo      8. Update Hosts File
-echo      9. Check for Updates
+echo   :: UPDATES (Flowseal)
+echo      7. Update IPSet List      (from project .service/ipset-service.txt)
+echo      8. Update Hosts File      (for Telegram Web / Discord voice)
+echo      9. Check for Updates      (new zapret version on GitHub)
+echo.
+echo   :: ADVANCED LIST UPDATES (bol-van/rulist)
+echo      12. Update list-general   (download hosts from rulist)
+echo      13. Update ipset-all      (download IP ranges from rulist)
 echo.
 echo   :: TOOLS
 echo      10. Run Diagnostics
@@ -88,7 +94,7 @@ echo   ----------------------------------------
 echo      0. Exit
 echo.
 
-set /p menu_choice=   Select option (0-11): 
+set /p menu_choice=   Select option (0-13): 
 
 if "%menu_choice%"=="1" goto service_install
 if "%menu_choice%"=="2" goto service_remove
@@ -101,6 +107,8 @@ if "%menu_choice%"=="8" goto hosts_update
 if "%menu_choice%"=="9" goto service_check_updates
 if "%menu_choice%"=="10" goto service_diagnostics
 if "%menu_choice%"=="11" goto run_tests
+if "%menu_choice%"=="12" start "" "%~dp0utils\\update-rulist-lists.bat" hosts
+if "%menu_choice%"=="13" start "" "%~dp0utils\\update-rulist-lists.bat" ipset
 if "%menu_choice%"=="0" exit /b
 goto menu
 
@@ -751,7 +759,7 @@ echo   3. UDP only
 echo.
 set "GameFilterChoice=0"
 set /p "GameFilterChoice=Select option (0-3, default: 0): "
-if %GameFilterChoice%=="" set "GameFilterChoice=0"
+if "%GameFilterChoice%"=="" set "GameFilterChoice=0"
 
 if "%GameFilterChoice%"=="0" (
     if exist "%gameFlagFile%" (
@@ -811,6 +819,7 @@ goto menu
 chcp 437 > nul
 
 set "listFile=%~dp0lists\ipset-all.txt"
+set "lineCount=0"
 for /f %%i in ('type "%listFile%" 2^>nul ^| find /c /v ""') do set "lineCount=%%i"
 
 if !lineCount!==0 (
