@@ -182,26 +182,17 @@ sc delete название_из_первого_шага
 - **`ipset-exclude-user.txt`** для исключения IP и подсетей
   - Файлы **`*-user.txt`** автоматически создадутся при первом запуске `zapret` или `service.bat`
 
-## ⭐Поддержка проекта
+## ⭐поддержка
 
-Вы можете поддержать проект, поставив :star: этому репозиторию (сверху справа этой страницы)
+вы можете поддержать проект, поставив ⭐ этому репозиторию (сверху справа этой страницы).
 
-Также вы можете материально поддержать оригинального разработчика zapret [тут](https://github.com/bol-van/zapret?tab=readme-ov-file#%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D1%82%D1%8C-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%87%D0%B8%D0%BA%D0%B0)
+отдельно можно поддержать оригинального разработчика zapret — [bol-van](https://github.com/bol-van/zapret).
 
-<a href="https://star-history.com/#Flowseal/zapret-discord-youtube&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Flowseal/zapret-discord-youtube&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Flowseal/zapret-discord-youtube&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Flowseal/zapret-discord-youtube&type=Date" />
- </picture>
-</a>
+## ⚖️лицензия и благодарности
 
-## ⚖️Лицензирование
-
-Проект распространяется на условиях лицензии [MIT](https://github.com/Flowseal/zapret-discord-youtube/blob/main/LICENSE.txt)
-
-## 🩷Благодарность участникам проекта
-
-[![Contributors](https://contrib.rocks/image?repo=Flowseal/zapret-discord-youtube)](https://github.com/Flowseal/zapret-discord-youtube/graphs/contributors)
-
-💖 Отдельная благодарность разработчику [zapret](https://github.com/bol-van/zapret) - [bol-van](https://github.com/bol-van)
+- лицензия: **MIT** (см. `license.txt`);
+- бинарники в `bin` — из [`bol-van/zapret-win-bundle`](https://github.com/bol-van/zapret-win-bundle);
+- исходные идеи и значительная часть конфигов:
+  - [`bol-van/zapret`](https://github.com/bol-van/zapret);
+  - [`Flowseal/zapret-discord-youtube`](https://github.com/Flowseal/zapret-discord-youtube);
+  - [`sch-izo/shizapret`](https://github.com/sch-izo/shizapret).
