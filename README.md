@@ -1,10 +1,11 @@
 <div align="center">
 
-## Zapret 1.9.8 (Vanilla fork)
+## Zapretik 1.9.8 (Vanilla fork)
 
 Форк проектов  
 <a href="https://github.com/Flowseal/zapret-discord-youtube">Flowseal/zapret-discord-youtube</a> и  
 <a href="https://github.com/sch-izo/shizapret">sch-izo/shizapret</a>  
+поддерживаемый пользователем <a href="https://github.com/Vanilla-SilQ-HD">Vanilla-SilQ-HD</a>,  
 с объединёнными стратегиями, обновлением списков через <a href="https://github.com/bol-van/rulist">bol-van/rulist</a> и улучшенным сервис‑менеджером под Windows.
 
 </div>
