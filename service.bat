@@ -107,8 +107,8 @@ if "%menu_choice%"=="8" goto hosts_update
 if "%menu_choice%"=="9" goto service_check_updates
 if "%menu_choice%"=="10" goto service_diagnostics
 if "%menu_choice%"=="11" goto run_tests
-if "%menu_choice%"=="12" start "" "%~dp0utils\\update-rulist-lists.bat" hosts
-if "%menu_choice%"=="13" start "" "%~dp0utils\\update-rulist-lists.bat" ipset
+if "%menu_choice%"=="12" call "%~dp0utils\\update-rulist-lists.bat" hosts
+if "%menu_choice%"=="13" call "%~dp0utils\\update-rulist-lists.bat" ipset
 if "%menu_choice%"=="0" exit /b
 goto menu
 
