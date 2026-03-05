@@ -73,9 +73,9 @@ echo      2. Remove Services
 echo      3. Check Status
 echo.
 echo   :: SETTINGS
-echo      4. Game Filter         [!GameFilterStatus!]
-echo      5. IPSet Filter        [!IPsetStatus!]
-echo      6. Auto-Update Check   [!CheckUpdatesStatus!]
+echo      4. Game filter         [!GameFilterStatus!]
+echo      5. Ipset filter        [!IPsetStatus!]
+echo      6. Auto-update check   [!CheckUpdatesStatus!]
 echo.
 echo   :: LIST / BIN UPDATES
 echo      7. Update list-general
@@ -714,7 +714,7 @@ chcp 437 > nul
 set "gameFlagFile=%~dp0utils\game_filter.enabled"
 
 if not exist "%gameFlagFile%" (
-    set "GameFilterStatus=disabled"
+    set "GameFilterStatus=Disabled"
     set "GameFilter=12"
     set "GameFilterTCP=12"
     set "GameFilterUDP=12"
@@ -727,17 +727,17 @@ for /f "usebackq delims=" %%A in ("%gameFlagFile%") do (
 )
 
 if /i "%GameFilterMode%"=="all" (
-    set "GameFilterStatus=enabled (TCP and UDP)"
+    set "GameFilterStatus=Enabled (TCP and UDP)"
     set "GameFilter=1024-65535"
     set "GameFilterTCP=1024-65535"
     set "GameFilterUDP=1024-65535"
 ) else if /i "%GameFilterMode%"=="tcp" (
-    set "GameFilterStatus=enabled (TCP)"
+    set "GameFilterStatus=Enabled (TCP)"
     set "GameFilter=1024-65535"
     set "GameFilterTCP=1024-65535"
     set "GameFilterUDP=12"
 ) else (
-    set "GameFilterStatus=enabled (UDP)"
+    set "GameFilterStatus=Enabled (UDP)"
     set "GameFilter=1024-65535"
     set "GameFilterTCP=12"
     set "GameFilterUDP=1024-65535"
@@ -762,7 +762,12 @@ if "%GameFilterChoice%"=="" set "GameFilterChoice=0"
 if "%GameFilterChoice%"=="0" (
     if exist "%gameFlagFile%" (
         del /f /q "%gameFlagFile%"
+        call :PrintYellow "Game filter disabled"
+        pause
+        goto menu
     ) else (
+        call :PrintYellow "Game filter is already disabled"
+        pause
         goto menu
     )
 ) else if "%GameFilterChoice%"=="1" (
@@ -821,13 +826,13 @@ set "lineCount=0"
 for /f %%i in ('type "%listFile%" 2^>nul ^| find /c /v ""') do set "lineCount=%%i"
 
 if !lineCount!==0 (
-    set "IPsetStatus=any"
+    set "IPsetStatus=Any"
 ) else (
     findstr /R "^203\.0\.113\.113/32$" "%listFile%" >nul
     if !errorlevel!==0 (
-        set "IPsetStatus=none"
+        set "IPsetStatus=None"
     ) else (
-        set "IPsetStatus=loaded"
+        set "IPsetStatus=Loaded"
     )
 )
 exit /b

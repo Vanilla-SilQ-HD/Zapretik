@@ -63,9 +63,9 @@
   - **`Install Service`** — установка выбранной стратегии в автозапуск (services.msc);
   - **`Remove Services`** — удаление стратегии и WinDivert из служб;
   - **`Check Status`** — статус служб и проверка наличия ключевых файлов в `bin\` (`winws.exe`, `WinDivert*.sys`, `WinDivert.dll`, `cygwin1.dll`);
-  - **`Game Filter`** — переключение режима обхода для игр (и других сервисов на высоких портах TCP/UDP).  
+  - **`Game filter`** — переключение режима обхода для игр (и других сервисов на высоких портах TCP/UDP).  
     После смены режима стратегию нужно перезапустить;
-  - **`IPSet Filter`** — включение/выключение фильтрации по `ipset-all.txt`;
+  - **`Ipset filter`** — включение/выключение фильтрации по `ipset-all.txt`;
   - **`Auto-Update Check`** — авто‑проверка новой версии **zapretik** из этого репозитория при запуске;
   - **`Update list-general`** — обновление `list-general.txt` доменами из [`bol-van/rulist`](https://github.com/bol-van/rulist);
   - **`Update ipset-all`** — обновление `ipset-all.txt` IP‑подсетями из `bol-van/rulist`;
