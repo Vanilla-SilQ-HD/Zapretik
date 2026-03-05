@@ -1,12 +1,16 @@
 <div align="center">
 
-## Zapretik 1.9.8 (Vanilla fork)
+## zapretik 1.9.8
 
-Форк проектов  
+минималистичный форк  
 <a href="https://github.com/Flowseal/zapret-discord-youtube">Flowseal/zapret-discord-youtube</a> и  
-<a href="https://github.com/sch-izo/shizapret">sch-izo/shizapret</a>  
-поддерживаемый пользователем <a href="https://github.com/Vanilla-SilQ-HD">Vanilla-SilQ-HD</a>,  
-с объединёнными стратегиями, обновлением списков через <a href="https://github.com/bol-van/rulist">bol-van/rulist</a> и улучшенным сервис‑менеджером под Windows.
+<a href="https://github.com/sch-izo/shizapret">sch-izo/shizapret</a>,  
+поддерживаемый пользователем <a href="https://github.com/Vanilla-SilQ-HD">Vanilla-SilQ-HD</a>.
+
+**цель** — сделать удобную «из коробки» рабочую сборку zapret под windows:
+- с объединёнными стратегиями (в том числе `shizapret.bat`);
+- с актуальными списками доменов/ip из <a href="https://github.com/bol-van/rulist">bol-van/rulist</a>;
+- с простым и понятным `service.bat`.
 
 </div>
 
