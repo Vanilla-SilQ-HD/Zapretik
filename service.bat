@@ -1,5 +1,5 @@
 @echo off
-set "LOCAL_VERSION=1.9.9"
+set "LOCAL_VERSION=1.9.9.1"
 set "RULIST_HOSTS_URL=https://raw.githubusercontent.com/bol-van/rulist/refs/heads/main/reestr_hostname.txt"
 set "RULIST_IPSET_URL=https://raw.githubusercontent.com/bol-van/rulist/refs/heads/main/reestr_smart4.txt"
 

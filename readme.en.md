@@ -1,6 +1,6 @@
 <div align="center">
 
-## zapretik 1.9.9
+## zapretik 1.9.9.1
 
 minimalistic fork of  
 <a href="https://github.com/Flowseal/zapret-discord-youtube">Flowseal/zapret-discord-youtube</a> and  
