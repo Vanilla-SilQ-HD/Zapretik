@@ -26,26 +26,35 @@ exit /b 0
 set "DF_URL=%~1"
 set "DF_DEST=%~2"
 set "DF_NAME=%~3"
+set "DF_TEMP=%DF_DEST%.tmp"
 
 echo [bin] Загружаем %DF_NAME%...
 
 if exist "%SystemRoot%\System32\curl.exe" (
-    curl -L -o "%DF_DEST%" "%DF_URL%"
+    curl -L -o "%DF_TEMP%" "%DF_URL%"
 ) else (
     powershell -NoProfile -Command ^
         "$url = '%DF_URL%';" ^
-        "$out = '%DF_DEST%';" ^
+        "$out = '%DF_TEMP%';" ^
         "$dir = Split-Path -Parent $out;" ^
         "if (-not (Test-Path $dir)) { New-Item -ItemType Directory -Path $dir | Out-Null };" ^
         "$data = Invoke-WebRequest -Uri $url -TimeoutSec 30 -UseBasicParsing;" ^
         "[System.IO.File]::WriteAllBytes($out, $data.Content)"
 )
 
-if exist "%DF_DEST%" (
-    echo [bin] %DF_NAME% успешно загружен.
-) else (
+if not exist "%DF_TEMP%" (
     echo [bin] ОШИБКА: не удалось скачать %DF_NAME% из %DF_URL%.
+    exit /b 1
 )
+
+for %%S in ("%DF_TEMP%") do if %%~zS LEQ 0 (
+    echo [bin] ОШИБКА: загруженный %DF_NAME% пустой. Предыдущая версия не тронута.
+    del /f /q "%DF_TEMP%" >nul 2>&1
+    exit /b 1
+)
+
+move /Y "%DF_TEMP%" "%DF_DEST%" >nul
+echo [bin] %DF_NAME% успешно загружен.
 
 exit /b 0
 
