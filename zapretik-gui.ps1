@@ -63,8 +63,15 @@ $btnTests.Location = New-Object System.Drawing.Point(210, 160)
 $btnTests.Size = New-Object System.Drawing.Size(180, 30)
 $btnTests.Text = "Run tests"
 $btnTests.Add_Click({
-    Start-Process -FilePath "powershell.exe" -WorkingDirectory $root -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File ""utils\test zapret.ps1""'
-    $labelStatus.Text = "Opening PowerShell tests window."
+    $scriptPath = Join-Path $root 'utils\test zapret.ps1'
+    Start-Process -FilePath "powershell.exe" -WorkingDirectory $root -ArgumentList @(
+        '-NoProfile'
+        '-ExecutionPolicy'
+        'Bypass'
+        '-File'
+        $scriptPath
+    ) -WindowStyle Normal
+    $labelStatus.Text = "Opening PowerShell tests window..."
 })
 
 $form.Controls.Add($labelStatus)
